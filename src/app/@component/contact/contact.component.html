@@ -1,0 +1,68 @@
+<!-- Contact Section-->
+<section class="page-section" id="contact">
+  <div class="container">
+
+    <app-title [title]="'Contact Me'" [dark]="true" [main]="false"></app-title>
+
+
+    <!-- Contact Section Form-->
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-xl-7">
+        <!-- * * * * * * * * * * * * * * *-->
+        <!-- * * SB Forms Contact Form * *-->
+        <!-- * * * * * * * * * * * * * * *-->
+        <!-- This form is pre-integrated with SB Forms.-->
+        <!-- To make this form functional, sign up at-->
+        <!-- https://startbootstrap.com/solution/contact-forms-->
+        <!-- to get an API token!-->
+
+        <form id="contactForm" [formGroup]="signupForm" (ngSubmit)="enviar(signupForm.value)"><!--Recoger los datos en formato json-->
+          <div class="form-group">
+            <label>NAME:</label>
+            <input type="text" formControlName="nombre" class="form-control" placeholder="Enter your name">
+          </div>
+          <div class="form-group">
+            <label>PHONE NUMBER:</label>
+            <input type="text" formControlName="telf" class="form-control" placeholder="Enter your phone number">
+          </div>
+          <div class="from-group">
+            <label>USER:</label>
+            <input type="text" formControlName="usuario" class="form-control" placeholder="Enter your user name">
+            <div  class="text-danger" *ngIf="signupForm.get('usuario')?.touched && signupForm.get('usuario')?.value==''">User name is required</div>
+          </div><br>
+          <div class="form-group">
+            <label>EMAIL:</label>
+            <input type="email" formControlName="email" class="form-control" placeholder="Enter your email">
+            <div class="text-danger"  *ngIf="signupForm.get('email')?.touched && signupForm.get('email')?.value==''">Email is required</div>
+          </div>
+          <div class="form-group">
+            <label>PASSWORD (Minimum 6 characters):</label>
+            <input type="password" formControlName="password" class="form-control" placeholder="Introduce password">
+            <div class="text-danger" *ngIf="signupForm.get('password')?.touched && signupForm.get('password')?.value==''">Password is required</div>
+          </div>
+          <div class="btn-group">
+            <button [disabled]="signupForm.invalid" type="submit" class="btn btn-primary">Check in</button> <!--Desabilitar el boton cuando los campos del formulario son invalidos-->
+
+            <button (click)="borrar()"type="button" class="btn btn-secondary">Delete</button>
+
+
+          </div>
+
+
+
+
+        </form>
+
+
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
